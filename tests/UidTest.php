@@ -69,11 +69,11 @@ class UidTest extends TestCase
     
     public function testText()
     {
-        $this->assertEquals(1, preg_match('/[a-z0-9]{20}/i', Uid::text()));
+        $this->assertEquals(1, preg_match('/[a-z0-9]{32}/i', Uid::text()));
     }
     
     public function testTextWithLength()
     {
-        $this->assertEquals(1, preg_match('/[a-z0-9]{5}/i', Uid::text(5)));
+        $this->assertEquals(1, preg_match('/[a-z0-9]{16}/i', Uid::text(16)));
     }
 }

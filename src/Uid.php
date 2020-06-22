@@ -51,9 +51,9 @@ final class Uid
         self::$intSequence = null;
     }
     
-    public static function text( int $length = 20): string
+    public static function text( int $length = 32): string
     {
-        return substr(md5(time(). rand(0, getrandmax())), 0, 20);
+        return substr(md5(time(). rand(0, getrandmax())), 0, $length);
     }
     
 }

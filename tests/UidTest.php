@@ -66,4 +66,14 @@ class UidTest extends TestCase
         $this->assertEquals(14, Uid::intSequence());
         $this->assertEquals(15, Uid::intSequence());
     }
+    
+    public function testText()
+    {
+        $this->assertEquals(1, preg_match('/[a-z0-9]{20}/i', Uid::text()));
+    }
+    
+    public function testTextWithLength()
+    {
+        $this->assertEquals(1, preg_match('/[a-z0-9]{5}/i', Uid::text(5)));
+    }
 }

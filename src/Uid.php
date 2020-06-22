@@ -1,4 +1,5 @@
 <?php
+
 /*
  * The MIT License
  *
@@ -31,29 +32,49 @@ namespace Uid;
  */
 final class Uid
 {
+
+    /**
+     *
+     * @var int|null Armazena a última sequência inteira gerada.
+     */
     private static ?int $intSequence = null;
-    
+
+    /**
+     * Produz um uid inteiro.
+     *
+     * @param int $start Início da sequência. Se fornecido será utilizado como primeiro uid gerado. Padrão é 0.
+     * @return int Retorna um inteiro imediatamente posterior ao último gerado ou ao fornecido em $start.
+     */
     public static function intSequence(int $start = 0): int
     {
-      
-        if(is_null(self::$intSequence)){
+        if (is_null(self::$intSequence)) {
             self::$intSequence = $start;
-        }else{
-            self::$intSequence++;
+            return self::$intSequence;
         }
-        
-        return self::$intSequence;
-        
+
+        self::$intSequence++;
+        return (int) self::$intSequence;
     }
-    
+
+    /**
+     * Reinicia a sequência controlada por Uid\Uid::intSequence().
+     *
+     * @return void
+     */
     public static function resetIntSequence(): void
     {
         self::$intSequence = null;
     }
-    
-    public static function text( int $length = 32): string
+
+    /**
+     * Retorna um uid no formato de string de tamanho fixo, contendo apenas letras e números.
+     *
+     * @param int $length Se fornecido, indica qual é o tamanho da sequência. O padrão é 32.
+     *
+     * @return string Retorna uma string do tamanho de $length contendo apenas letras e números.
+     */
+    public static function text(int $length = 32): string
     {
-        return substr(md5(time(). rand(0, getrandmax())), 0, $length);
+        return substr(md5(time() . rand(0, getrandmax())), 0, $length);
     }
-    
 }

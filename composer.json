@@ -1,5 +1,5 @@
 {
-    "name": "everton3x/uid",
+    "name": "php-tool-kit/uid",
     "description": "Unique Id generator.",
     "type": "library",
     "require": {
@@ -22,7 +22,7 @@
     ],
     "autoload": {
         "psr-4": {
-            "Uid\\": "src"
+            "PTK\\Uid\\": "src"
         }
     }
 }
